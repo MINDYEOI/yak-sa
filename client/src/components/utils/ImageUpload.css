@@ -1,0 +1,45 @@
+#test {
+  width: 300px;
+  height: 200px;
+  border: 1px solid rgb(155, 155, 155);
+  border-radius: 1em;
+  display: flex;
+  position: relative;
+}
+#alert {
+  width: 300px;
+  height: 200px;
+  border: 1px solid rgb(155, 155, 155);
+  border-radius: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#test:hover {
+  animation: del 0.7s forwards;
+}
+
+@keyframes del {
+  to {
+    filter: brightness(50%);
+  }
+}
+
+#alert {
+  position: relative;
+  bottom: 200px;
+  opacity: 0;
+}
+
+#alert:hover {
+  background-color: black;
+  color: white;
+  animation: fadeInUP 0.2s forwards;
+}
+
+@keyframes fadeInUP {
+  to {
+    opacity: 0.5;
+  }
+}
