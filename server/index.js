@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
   // index.html for all page routes
-  app.get("/", (req, res) => { // 원래 / 대신 * 이었음
+  app.get("*", (req, res) => { // 원래 / 대신 * 이었음
     res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
     res.send("hello world");
   });
