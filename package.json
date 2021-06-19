@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server/index.js",
     "build" : "cd client && npm install && npm run build",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "npm run build"
   },
   "author": "mindyeoi",
   "license": "ISC",
