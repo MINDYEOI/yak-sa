@@ -2,17 +2,18 @@ import React, { Component } from 'react'
 import { Typography, Button, Form, Input } from 'antd';
 import axios from 'axios';
 import FileUpload from '../../utils/FileUpload';
+import { PRODUCT_SERVER } from '../../components/Config.js';
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
 const Medicines = [
-    { key: 1, value: "진통제" },
-    { key: 2, value: "소화제" },
+    { key: 1, value: "진통제" },
+    { key: 2, value: "소화제" },
     { key: 3, value: "감기약" },
     { key: 4, value: "해열제" },
     { key: 5, value: "파스류" },
-    { key: 6, value: "상처치료" },
+    { key: 6, value: "상처치료" },
     { key: 7, value: "기타" }
 ]
 
@@ -65,7 +66,7 @@ export class UploadProductPage extends Component {
             price: this.state.price
         }
 
-        axios.post('/api/product/uploadProduct', variables)
+        axios.post(`${PRODUCT_SERVER}/uploadProduct`, variables)
             .then(response => {
                 if (response.data.success) {
                     alert('성공적으로 업로드 했습니다.')

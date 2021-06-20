@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios';
 import { useState } from 'react';
 import './ImageUpload.css'
-
+import { PRODUCT_SERVER } from '../Config'
 function ImageUpload(props) {
 
     const [Images, setImages] = useState([])    // 이미지를 여러장 들어가게 하기 위해서
@@ -18,7 +18,7 @@ function ImageUpload(props) {
         imageData.append("file", files[0])
 
         // 이미지 전달
-        axios.post('/api/product/image', imageData, config)
+        axios.post(`${PRODUCT_SERVER}/image`, imageData, config)
             .then(response => {
                 if (response.data.success) {
                     //console.log(response.data)
@@ -75,7 +75,7 @@ function ImageUpload(props) {
 
                     <div onClick={ () => deleteEvent(image) }
                         key={index}>                        
-                        <img id="test" src={`http://localhost:5000/${image}`} />
+                        <img id="test" src={`http://3.209.242.35/${image}`} />
                         <div id="alert">클릭하면 삭제돼요!</div>
 
                 </div>

@@ -7,6 +7,8 @@ import { medicines, price } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
 import { Container } from "react-bootstrap";
 
+import { PRODUCT_SERVER } from '../../Config.js'
+
 const { Meta } = Card;
 
 function LandingPage() {
@@ -31,7 +33,7 @@ function LandingPage() {
   }, []);
 
   const getProducts = variables => {
-    Axios.post("/api/product/getProducts", variables).then(response => {
+    Axios.post(`${PRODUCT_SERVER}/getProducts`, variables).then(response => {
       if (response.data.success) {
         if (variables.loadMore) {
           setProducts([...Products, ...response.data.products]);

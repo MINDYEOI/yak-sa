@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import {Button, Form, message, Input, Icon } from "antd";
 import FileUpload from "../../utils/FileUpload";
 import Axios from "axios";
-
+import { PRODUCT_SERVER } from '../../Config'
 const { TextArea } = Input;
 
 const Medicines = [
-  { key: 1, value: "진통제" },
-  { key: 2, value: "소화제" },
+  { key: 1, value: "진통제" },
+  { key: 2, value: "소화제" },
   { key: 3, value: "감기약" },
   { key: 4, value: "해열제" },
   { key: 5, value: "파스류" },
-  { key: 6, value: "상처치료" },
+  { key: 6, value: "상처치료" },
   { key: 7, value: "기타" }
 ];
 
@@ -46,7 +46,7 @@ function UploadProductPage(props) {
     event.preventDefault();
 
     if (!TitleValue || !DescriptionValue || !PriceValue || !MedicinesValue || !Images) {
-      return alert("fill all the fields first!");
+      return alert("모두 입력해주세요.");
     }
 
     const variables = {
@@ -58,12 +58,12 @@ function UploadProductPage(props) {
       medicines: MedicinesValue,
     };
 
-    Axios.post("/api/product/uploadProduct", variables).then(response => {
+    Axios.post(`${PRODUCT_SERVER}/uploadProduct`, variables).then(response => {
       if (response.data.success) {
-        alert("Product Successfully Uploaded");
+        alert("성공적으로 업로드 되었습니다.");
         props.history.push("/");
       } else {
-        alert("Failed to upload Product");
+        alert("실패했습니다.");
       }
     });
   };

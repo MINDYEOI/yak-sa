@@ -4,13 +4,14 @@ import {useEffect, useState} from 'react'
 import ProductImage from './Sections/ProductImage'
 import ProductInfo from './Sections/ProductInfo'
 import { Row, Col } from 'antd';
+import { PRODUCT_SERVER } from '../../Config'
 function DetailProductPages(props) {
     const [Product, setProduct] = useState({})
     const productId = props.match.params.prouductID 
     //console.log(props.match.params.prouductID) //->정상적으로 출력
 
     useEffect(() => {
-        axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
+        axios.get(`${PRODUCT_SERVER}/products_by_id?id=${productId}&type=single`)
             .then(response => {
                 if (response.data.success) {
                     console.log(response.data)

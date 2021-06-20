@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Typography, Button, Form, Input } from 'antd'; // css
 import ImageUpload from '../../utils/ImageUpload'
 import Axios from 'axios';
-
+import { PRODUCT_SERVER } from '../../Config'
 const { TextArea } = Input;     // 박스크기 조절을 사용자가 임의로 가능하게 함.
 
 // Select symtoms
@@ -69,7 +69,7 @@ function UploadPage(props) {
             symtoms: Option
         }
 
-        Axios.post("/api/product", body)
+        Axios.post(`${PRODUCT_SERVER}`, body)
             .then(response => {
                 if (response.data.success) {
                     alert("업로드가 완료되었습니다.");

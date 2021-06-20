@@ -10,7 +10,10 @@
   "scripts": {
     "start": "node server/index.js",
     "build" : "cd client && npm install && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "backend": "nodemon server/index.js",
+    "frontend": "npm run front --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
   "author": "mindyeoi",
   "license": "ISC",
